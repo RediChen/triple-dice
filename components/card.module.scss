@@ -1,7 +1,14 @@
 .card {
-  $l: 150px;
-  width: $l;
-  height: $l;
+  $l: 100px !default;
+    width: $l;
+    height: $l;
+  font-size: 3rem;
+  @media (min-width: 992px) {
+    $l: 150px;
+    width: $l;
+    height: $l;
+  font-size: 5rem;
+}
   position: relative;
 
   //** 翻牌 */
@@ -24,7 +31,8 @@
   transition: transform 2s;
 }
 
-.front, .back {
+.front,
+.back {
   position: absolute;
   top: 0;
   left: 0;
@@ -51,7 +59,6 @@
 }
 .back {
   background-color: hsl(57, 80%, 67%);
-  font-size: 5rem;
   font-weight: 800;
   //** 翻牌 */
   transform: rotateY(180deg);

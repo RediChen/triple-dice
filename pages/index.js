@@ -81,7 +81,7 @@ export default function Home() {
       </div>
       <main className={[s.main, noto.className].join(' ')}>
         <button
-          className="btn btn-warning"
+          className={['btn btn-outline-warning', s.pauseBtn].join(' ')}
           onClick={() => setIsPaused((s) => !s)}
         >
           暫停動畫

@@ -12,7 +12,7 @@ const noto = Noto_Sans_TC({ subsets: ['latin'] })
 export default function Home() {
   const THREE = [0, 0, 0]
   const THREE_F = [false, false, false]
-  const [isPaused, setIsPaused] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
   const [resultArr, setResultArr] = useState(THREE)
   const [cardShakeState, setCardShakeState] = useState(THREE_F)
   const [cardFlipState, setCardFlipState] = useState(THREE_F)
@@ -84,7 +84,7 @@ export default function Home() {
           className="btn btn-warning"
           onClick={() => setIsPaused((s) => !s)}
         >
-          暫停
+          暫停動畫
         </button>
         <button
           className={['btn btn-success', s.diceBtn].join(' ')}

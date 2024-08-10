@@ -93,15 +93,17 @@ export default function Home() {
         </button>
       </main>
       <div className={s.panel}>
-        {THREE.map((_, i) => (
-          <Card
-            key={i}
-            doesFlip={cardFlipState[i]}
-            doesShake={cardShakeState[i]}
-          >
-            {resultArr[i]}
-          </Card>
-        ))}
+        <div className="row row-cols-1 row-cols-lg-3 gap-5 justify-content-around align-items-center">
+          {THREE.map((_, i) => (
+            <Card
+              key={i}
+              doesFlip={cardFlipState[i]}
+              doesShake={cardShakeState[i]}
+            >
+              {resultArr[i]}
+            </Card>
+          ))}
+        </div>
       </div>
     </>
   )

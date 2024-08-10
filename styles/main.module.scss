@@ -1,3 +1,5 @@
+@use '@/node_modules/bootstrap/scss/mixins/breakpoints' as rwd;
+
 // $main-pink: #fbbfd6;
 // $main-red: #f78abe;
 $main-pink: #ffdce9;
@@ -66,18 +68,31 @@ $period: 8s;
   right: 0;
   border: 8px solid goldenrod;
 }
-
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+//   xxl: 1400px
+// ) !default;
 .panel {
   position: absolute;
+
   top: 50%;
   left: 50%;
   width: 75vw;
-  height: 35vh;
+  height: 75vh;
+  @media (min-width: 992px) {
+    top: 50%;
+    left: 50%;
+    width: 75vw;
+    height: 35vh;
+  }
+
   transform: translate(-50%, -50%);
   border: 8px solid #ffffff88;
   border-radius: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  place-items: center;
 }

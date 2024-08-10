@@ -1,0 +1,58 @@
+.card {
+  $l: 150px;
+  width: $l;
+  height: $l;
+  position: relative;
+
+  //** 翻牌 */
+  perspective: 500px;
+
+  //** 觸發翻牌 */
+  &.flip .membrane {
+    transform: rotateY(180deg);
+  }
+}
+
+.membrane {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  //** 翻牌 */
+  transform-style: preserve-3d;
+  transition: transform 2s;
+}
+
+.front, .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  //** 翻牌 */
+  backface-visibility: hidden;
+}
+
+.front {
+  border: 8px solid #dc767f;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.back {
+  background-color: hsl(57, 80%, 67%);
+  font-size: 5rem;
+  font-weight: 800;
+  //** 翻牌 */
+  transform: rotateY(180deg);
+}

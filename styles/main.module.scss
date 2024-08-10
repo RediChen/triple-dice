@@ -70,13 +70,23 @@ $period: 8s;
   bottom: 0;
   right: 0;
 }
+.pauseBtn {
+  margin-top: 8px;
+  margin-left: 8px;
+  writing-mode: vertical-lr;
+  color: brown
+}
 
 .diceBtn {
-  padding: 1rem 3rem;
-  border-radius: 99rem;
+  padding: 3rem 1rem;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 1rem;
+  @media (min-width: 992px) {
+    padding: 1rem 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  border-radius: 99rem;
   bottom: 50px;
   font-size: 2rem;
   z-index: 9;
@@ -99,7 +109,7 @@ $period: 8s;
   @media (min-width: 992px) {
     top: 50%;
     left: 50%;
-    width: 75vw;
+    width: 85vw;
     height: 35vh;
   }
 

@@ -6,7 +6,8 @@ import StarStr from '@/components/StarStr'
 import { useEffect, useState } from 'react'
 // import { useTimeout } from 'usehooks-ts'
 import Card from '@/components/Card'
-
+import { FaCog } from 'react-icons/fa'
+import { PiPauseDuotone, PiPlusCircle, PiMinusCircle } from 'react-icons/pi'
 const noto = Noto_Sans_TC({ subsets: ['latin'] })
 const yuji = Yuji_Mai({ subsets: ['latin'], weight: '400' })
 
@@ -36,6 +37,8 @@ export default function Home() {
   // 1 - 加過頭的情形
   const initMsgState = [false, false]
   const [msgState, setMsgState] = useState(initMsgState)
+
+  const [activePanel, setActivePanel] = useState(false)
 
   const numList = [2, 3, 5, 7, 10, 11]
 
@@ -90,10 +93,10 @@ export default function Home() {
     if (cardFlipState.some((v) => v)) {
       setCardFlipState(initSlot)
       setTimeout(() => {
-        setResultArr(resultArr.map((_) => tossDice(numList)))
+        setResultArr(resultArr.map(() => tossDice(numList)))
       }, 2000)
     } else {
-      setResultArr(resultArr.map((_) => tossDice(numList)))
+      setResultArr(resultArr.map(() => tossDice(numList)))
     }
   }
 
@@ -131,50 +134,74 @@ export default function Home() {
         </div>
       </div>
       {/*===========================//* 介面 */}
-      <main className={[s.main, noto.className].join(' ')}>
-        <button
-          className={['btn btn-outline-warning', s.pauseBtn].join(' ')}
-          onClick={() => setIsPaused((s) => !s)}
-        >
-          暫停動畫
-        </button>
-        <button
-          className={['btn btn-warning', s.pauseBtn].join(' ')}
-          onClick={() => handleCardNumber(-1)}
-        >
-          減
-        </button>
-        <button
-          className={['btn btn-warning', s.pauseBtn].join(' ')}
-          onClick={() => handleCardNumber(1)}
-        >
-          加
-        </button>
-        <button
-          className={['btn btn-success', s.diceBtn].join(' ')}
-          onClick={() => handleDice()}
-        >
-          骰
-        </button>
-        <div>這個要作常駐選單按鈕</div>
-      </main>
-      {/*===========================//* 卡片 */}
-      <div className={s.panel}>
-        <div className="row row-cols-1 row-cols-lg-3 gap-5 justify-content-around align-items-center">
-          {cardState.map(
-            (isActive, i) =>
-              isActive && (
-                <Card
-                  key={i}
-                  doesFlip={cardFlipState[i]}
-                  doesShake={cardShakeState[i]}
+      <main className={['container', s.main, noto.className].join(' ')}>
+        <div className={s.membrane}>
+          {/*==== 卡片區 ====*/}
+          <div className={[s.panelWrap, 'px-3 py-5'].join(' ')}>
+            <div className={s.panel}>
+              <div className="row row-cols-2 row-cols-lg-3 g-5 justify-content-around align-items-center">
+                {cardState.map(
+                  (isActive, i) =>
+                    isActive && (
+                      <div className="col" key={i}>
+                        <Card
+                          doesFlip={cardFlipState[i]}
+                          doesShake={cardShakeState[i]}
+                        >
+                          {resultArr[i]}
+                        </Card>
+                      </div>
+                    )
+                )}
+              </div>
+            </div>
+          </div>
+          {/*==== 功能鈕 ====*/}
+          <div className={s.configArea}>
+            {activePanel && (
+              <>
+                <button
+                  className={[s.numBtn].join(' ')}
+                  onClick={() => handleCardNumber(-1)}
                 >
-                  {resultArr[i]}
-                </Card>
-              )
-          )}
+                  <PiMinusCircle />
+                </button>
+                <button
+                  className={['btn btn-outline-warning', s.pauseBtn].join(' ')}
+                  onClick={() => setIsPaused((s) => !s)}
+                >
+                  <PiPauseDuotone />
+                </button>
+                <button
+                  className={[s.numBtn].join(' ')}
+                  onClick={() => handleCardNumber(1)}
+                >
+                  <PiPlusCircle />
+                </button>
+              </>
+            )}
+          </div>
+          {/*==== 功能鈕 ====*/}
+          {/*==== 核心功能鈕 ====*/}
+          <div className={s.diceBtnBox}>
+            <button
+              className={['btn btn-success', s.diceBtn].join(' ')}
+              onClick={() => handleDice()}
+            >
+              骰
+            </button>
+          </div>
         </div>
-      </div>
+
+        {/*==== 功能鈕：絕對定位 ====*/}
+        <button
+          className={s.configBtn}
+          onClick={() => setActivePanel(!activePanel)}
+        >
+          <FaCog />
+        </button>
+      </main>
+
       {/*===========================//* 訊息 */}
       {msgState[0] && (
         <article className={s.message}>

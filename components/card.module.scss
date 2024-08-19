@@ -1,3 +1,8 @@
+$main-pink: #ffdce9;
+$main-red: #ffd0e6;
+$medium-pink: #dc767f;
+$back-pink: #815469;
+
 .card {
   $l: 100px !default;
     width: $l;
@@ -49,7 +54,7 @@
 }
 
 .front {
-  border: 8px solid #dc767f;
+  border: 8px solid $medium-pink;
   overflow: hidden;
   img {
     width: 100%;
@@ -58,8 +63,9 @@
   }
 }
 .back {
-  background-color: hsl(57, 80%, 67%);
-  font-weight: 800;
+  background-color: $medium-pink;
+  color: $main-pink;
+  font-weight: 900;
   //** 翻牌 */
   transform: rotateY(180deg);
 }

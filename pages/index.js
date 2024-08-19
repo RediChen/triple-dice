@@ -134,12 +134,12 @@ export default function Home() {
         </div>
       </div>
       {/*===========================//* 介面 */}
-      <main className={['container', s.main, noto.className].join(' ')}>
+      <main className={['container mh-100', s.main, noto.className].join(' ')}>
         <div className={s.membrane}>
           {/*==== 卡片區 ====*/}
           <div className={[s.panelWrap, 'px-3 py-5'].join(' ')}>
             <div className={s.panel}>
-              <div className="row row-cols-2 row-cols-lg-3 g-5 justify-content-around align-items-center">
+              <div className="row row-cols-2 row-cols-md-3 g-1 justify-content-around align-items-center">
                 {cardState.map(
                   (isActive, i) =>
                     isActive && (

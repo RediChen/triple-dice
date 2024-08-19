@@ -5,15 +5,17 @@ $back-pink: #815469;
 
 .card {
   $l: 100px !default;
-    width: $l;
-    height: $l;
+  width: $l;
+  height: $l;
+  max-width: 23svh;
+  max-height: 23svh;
   font-size: 3rem;
   @media (min-width: 992px) {
     $l: 150px;
     width: $l;
     height: $l;
-  font-size: 5rem;
-}
+    font-size: 5rem;
+  }
   position: relative;
 
   //** 翻牌 */

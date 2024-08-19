@@ -13,7 +13,7 @@ export default function Card({
     : 'animate__animated'
   //animate__headShake OR animate__shakeX
   return (
-    <div className={[s.card, c1, c2].join(' ')}>
+    <div className={[s.card, c1, c2, 'mx-auto'].join(' ')}>
       <div className={s.membrane}>
         <div className={s.front}>
           <div className={s.frame}>

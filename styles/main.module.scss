@@ -1,9 +1,16 @@
-
 // $main-pink: #fbbfd6;
 // $main-red: #f78abe;
 $main-pink: #ffdce9;
 $main-red: #ffd0e6;
+$medium-pink: #dc767f;
+$back-pink: #531b35;
 
+.gr-center {
+  display: grid;
+  place-items: center;
+}
+
+//*======== 背景區 ===============================
 .bg {
   height: 100svh;
   display: flex;
@@ -61,6 +68,7 @@ $period: 8s;
   }
 }
 
+//*======== 介面區 ===============================
 .main {
   position: absolute;
   top: 0;
@@ -70,26 +78,74 @@ $period: 8s;
   bottom: 0;
   right: 0;
 }
-.pauseBtn {
-  margin-top: 8px;
-  margin-left: 8px;
-  writing-mode: vertical-lr;
-  color: brown
+
+.membrane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
+.panelWrap {
+  flex-grow: 1;
+}
+.panel {
+  height: 100%;
+  border: 8px solid #ffffff88;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+}
+
+.configArea {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.numBtn, .pauseBtn {
+  @extend .gr-center;
+  background-color: transparent;
+  border: none;
+  font-size: 5rem;
+  color: $back-pink;
+  // transition: 0.5s background-color;
+
+  // &:active {
+  //   background-color: $medium-pink;
+  // }
+}
+
+.diceBtnBox {
+  flex-basis: 8rem;
+  display: grid;
+  place-items: center;
+}
 .diceBtn {
-  padding: 3rem 1rem;
-  position: absolute;
-  right: 1rem;
-  @media (min-width: 992px) {
-    padding: 1rem 3rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  padding: 1rem 3rem;
   border-radius: 99rem;
+  border: 5px solid $medium-pink;
+  background-color: #fff;
+  color: $back-pink;
   bottom: 50px;
   font-size: 2rem;
   z-index: 9;
+}
+
+.configBtn {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  $l: 3rem;
+  display: grid;
+  place-items: center;
+  width: $l;
+  height: $l;
+  border-radius: 50%;
+
+  background-color: rgba($main-red, 1);
+  border: none;
+  color: $back-pink;
+  font-size: 2rem;
 }
 // $grid-breakpoints: (
 //   xs: 0,
@@ -99,23 +155,37 @@ $period: 8s;
 //   xl: 1200px,
 //   xxl: 1400px
 // ) !default;
-.panel {
+
+//*======== 互動訊息區 ===============================
+
+.message {
   position: absolute;
 
-  top: 50%;
-  left: 50%;
-  width: 75vw;
-  height: 75vh;
-  @media (min-width: 992px) {
-    top: 50%;
-    left: 50%;
-    width: 85vw;
-    height: 35vh;
-  }
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  z-index: 999;
 
-  transform: translate(-50%, -55%);
-  border: 8px solid #ffffff88;
-  border-radius: 4px;
   display: grid;
   place-items: center;
+  animation: vanishing 1.8s linear 1 forwards;
+
+  p {
+    font-size: 5rem;
+    writing-mode: vertical-rl;
+  }
+}
+
+@keyframes vanishing {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

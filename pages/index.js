@@ -137,7 +137,7 @@ export default function Home() {
       <main className={['container mh-100', s.main, noto.className].join(' ')}>
         <div className={s.membrane}>
           {/*==== 卡片區 ====*/}
-          <div className={[s.panelWrap, 'px-3 py-5'].join(' ')}>
+          <div className={[s.panelWrap, 'px-3 pt-4'].join(' ')}>
             <div className={s.panel}>
               <div className="row row-cols-2 row-cols-md-3 g-1 justify-content-around align-items-center">
                 {cardState.map(
@@ -206,14 +206,18 @@ export default function Home() {
       {msgState[0] && (
         <article className={s.message}>
           <p className={['text-danger', yuji.className].join(' ')}>
-            誰把老師惹毛了！
+            誰把老師
+            <br />
+            惹毛了！
           </p>
         </article>
       )}
       {msgState[1] && (
         <article className={s.message}>
           <p className={['text-danger', yuji.className].join(' ')}>
-            做人不要太貪心！
+            做人不要
+            <br />
+            太貪心！
           </p>
         </article>
       )}

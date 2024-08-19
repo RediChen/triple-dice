@@ -106,7 +106,7 @@ $period: 8s;
   @extend .gr-center;
   background-color: transparent;
   border: none;
-  font-size: 4rem;
+  font-size: 3rem;
   color: $back-pink;
   // transition: 0.5s background-color;
 
@@ -173,7 +173,7 @@ $period: 8s;
   animation: vanishing 1.8s linear 1 forwards;
 
   p {
-    font-size: 5rem;
+    font-size: 4rem;
     writing-mode: vertical-rl;
   }
 }
